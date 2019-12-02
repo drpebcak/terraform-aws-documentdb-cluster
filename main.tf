@@ -5,7 +5,7 @@ resource "aws_docdb_subnet_group" "docdb" {
 
 resource "aws_docdb_cluster" "api_docdb" {
   cluster_identifier_prefix       = var.name
-  db_subnet_group_name            = aws_docdb_subnet_group.sn_docdb.name
+  db_subnet_group_name            = aws_docdb_subnet_group.docdb.name
   db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.api_docdb.name
   vpc_security_group_ids          = var.cluster_security_group
   engine                          = "docdb"
