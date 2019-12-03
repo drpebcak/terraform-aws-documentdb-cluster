@@ -12,6 +12,7 @@ resource "aws_docdb_cluster" "api_docdb" {
   master_username                 = var.master_username
   master_password                 = var.master_password
   storage_encrypted               = var.storage_encrypted
+  apply_immediately               = var.apply_immediately
 
   backup_retention_period = var.backup_retention_period
   preferred_backup_window = var.preferred_backup_window

@@ -54,3 +54,9 @@ variable "parameters" {
   type        = list(map(any))
   default     = []
 }
+
+variable "apply_immediately" {
+  default     = false
+  description = "Specifies whether any cluster modifications are applied immediately, or during the next maintenance window."
+  type        = bool
+}

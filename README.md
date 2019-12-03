@@ -7,6 +7,7 @@ This terraform module creates a documentDB cluster.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| apply\_immediately | Specifies whether any cluster modifications are applied immediately, or during the next maintenance window. | bool | `"false"` | no |
 | backup\_retention\_period |  | number | `"7"` | no |
 | cluster\_instance\_class |  | string | `"db.r5.large"` | no |
 | cluster\_instance\_count |  | number | `"1"` | no |
