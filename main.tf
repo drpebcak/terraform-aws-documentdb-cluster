@@ -24,6 +24,7 @@ resource "aws_docdb_cluster_instance" "cluster_instances" {
   identifier         = "${var.name}-${count.index}"
   cluster_identifier = aws_docdb_cluster.api_docdb.id
   instance_class     = var.cluster_instance_class
+  ca_cert_identifier = var.ca_cert_identifier
 }
 
 resource "aws_docdb_cluster_parameter_group" "api_docdb" {

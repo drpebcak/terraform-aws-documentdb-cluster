@@ -60,3 +60,9 @@ variable "apply_immediately" {
   description = "Specifies whether any cluster modifications are applied immediately, or during the next maintenance window."
   type        = bool
 }
+
+variable "ca_cert_identifier" {
+  default     = "rds-ca-2019"
+  description = "Optional, identifier of the CA certificate to use for DB instance"
+  type        = string
+}
