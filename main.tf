@@ -9,6 +9,7 @@ resource "aws_docdb_cluster" "docdb" {
   db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.docdb.name
   vpc_security_group_ids          = var.cluster_security_group
   engine                          = var.engine
+  engine_version                  = var.engine_version
   master_username                 = var.master_username
   master_password                 = var.master_password
   storage_encrypted               = var.storage_encrypted
