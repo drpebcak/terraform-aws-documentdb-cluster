@@ -66,3 +66,21 @@ variable "ca_cert_identifier" {
   description = "Optional, identifier of the CA certificate to use for DB instance"
   type        = string
 }
+
+variable "family" {
+  default     = "docdb3.6"
+  description = "Version of docdb family being created"
+  type        = string
+}
+
+variable "engine" {
+  default     = "docdb"
+  description = "The name of the database engine to be used for this DB cluster. Only `docdb` is supported."
+  type        = string
+}
+
+variable "engine_version" {
+  default     = "3.6.0"
+  description = "The database engine version. Updating this argument results in an outage."
+  type        = string
+}

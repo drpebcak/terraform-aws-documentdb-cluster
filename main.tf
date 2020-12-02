@@ -3,12 +3,12 @@ resource "aws_docdb_subnet_group" "docdb" {
   subnet_ids  = var.group_subnets
 }
 
-resource "aws_docdb_cluster" "api_docdb" {
+resource "aws_docdb_cluster" "docdb" {
   cluster_identifier_prefix       = var.name
   db_subnet_group_name            = aws_docdb_subnet_group.docdb.name
-  db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.api_docdb.name
+  db_cluster_parameter_group_name = aws_docdb_cluster_parameter_group.docdb.name
   vpc_security_group_ids          = var.cluster_security_group
-  engine                          = "docdb"
+  engine                          = var.engine
   master_username                 = var.master_username
   master_password                 = var.master_password
   storage_encrypted               = var.storage_encrypted
@@ -22,13 +22,13 @@ resource "aws_docdb_cluster" "api_docdb" {
 resource "aws_docdb_cluster_instance" "cluster_instances" {
   count              = var.cluster_instance_count
   identifier         = "${var.name}-${count.index}"
-  cluster_identifier = aws_docdb_cluster.api_docdb.id
+  cluster_identifier = aws_docdb_cluster.docdb.id
   instance_class     = var.cluster_instance_class
   ca_cert_identifier = var.ca_cert_identifier
 }
 
-resource "aws_docdb_cluster_parameter_group" "api_docdb" {
-  family      = "docdb3.6"
+resource "aws_docdb_cluster_parameter_group" "docdb" {
+  family      = var.family
   name_prefix = var.name
   description = "${var.name} docdb cluster parameter group"
   dynamic "parameter" {
